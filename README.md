@@ -34,6 +34,8 @@ npm run preview   # preview production build
 
 Place `profile.jpg` in the `public/` folder. Recommended: square image, minimum 400×400px.
 
+> The image is referenced via `import.meta.env.BASE_URL` to ensure correct path resolution on GitHub Pages.
+
 ## Certification links
 
 Update the credential URLs in `src/components/sections/Certifications.tsx`:
@@ -58,7 +60,7 @@ docker compose up
 
 1. Push to a GitHub repository
 2. Go to **Settings → Pages → Source → GitHub Actions**
-3. Push to `main` — the workflow in `.github/workflows/deploy.yml` handles the rest
+3. Push to `master` — the workflow in `.github/workflows/deploy.yml` handles the rest
 
 If deploying to `github.com/username/repo-name` (without custom domain), set `base` in `vite.config.ts`:
 
@@ -67,6 +69,8 @@ base: '/repo-name/',
 ```
 
 For a custom domain, keep `base: '/'` and add a `CNAME` file to `public/` with your domain.
+
+**Live:** https://guilhermedelfino.github.io/Portifolio/
 
 ## Project structure
 
