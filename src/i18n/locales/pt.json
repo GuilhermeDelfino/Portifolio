@@ -20,6 +20,8 @@
   "about.p3": "Sou apaixonado por resolver problemas difíceis de engenharia — desde otimizar uma query em produção de 40s para 6s com 2M+ de registros, até projetar arquiteturas orientadas a eventos que conectam hardware e sistemas em cloud.",
 
   "experience.title": "Experiência",
+  "experience.expand": "Ver detalhes",
+  "experience.collapse": "Ocultar detalhes",
 
   "experience.netcracker.role": "Engenheiro de Software Pleno",
   "experience.netcracker.company": "Netcracker Technology",

@@ -13,7 +13,11 @@ const ContactSection = styled.section`
 const Inner = styled.div`
   max-width: 1100px;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 4rem 1rem;
+
+  @media (min-width: 480px) {
+    padding: 5rem 1.5rem;
+  }
 
   @media (min-width: 768px) {
     padding: 6rem 2rem;
@@ -28,19 +32,21 @@ const Content = styled.div<{ $visible: boolean }>`
 
 const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.textSecondary};
-  margin: 1rem 0 2.5rem;
+  margin: 0.75rem 0 2rem;
   max-width: 500px;
   line-height: 1.7;
+  font-size: 0.9375rem;
 `
 
 const ContactGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  max-width: 600px;
+  gap: 0.75rem;
+  max-width: 580px;
 
-  @media (min-width: 480px) {
+  @media (min-width: 560px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 `
 
@@ -48,70 +54,71 @@ const ContactCard = styled.div`
   background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 0.75rem;
-  padding: 1rem 1.25rem;
+  padding: 0.875rem 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.primary}20;
+    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.primary}15;
   }
 `
 
 const CardTop = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.875rem;
-  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+  margin-bottom: 0.625rem;
 `
 
 const ContactIcon = styled.div`
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
   background: ${({ theme }) => theme.colors.primary}15;
   color: ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   flex-shrink: 0;
 `
 
 const ContactInfo = styled.div`
-  overflow: hidden;
+  min-width: 0;
   flex: 1;
 `
 
 const ContactLabel = styled.p`
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: ${({ theme }) => theme.colors.textSecondary};
   margin-bottom: 0.125rem;
 `
 
 const ContactValue = styled.p`
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.text};
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 const Actions = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 `
 
-const ActionBtn = styled.a<{ $variant?: 'copy' | 'whatsapp' | 'mail' }>`
+const ActionBtn = styled.a<{ $green?: boolean }>`
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.75rem;
+  gap: 0.3rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.3rem 0.625rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 0.375rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -120,35 +127,33 @@ const ActionBtn = styled.a<{ $variant?: 'copy' | 'whatsapp' | 'mail' }>`
   color: ${({ theme }) => theme.colors.textSecondary};
   background: transparent;
   font-family: inherit;
+  white-space: nowrap;
 
   &:hover {
+    border-color: ${({ $green }) => ($green ? '#25d366' : 'inherit')};
+    color: ${({ $green }) => ($green ? '#25d366' : 'inherit')};
+    background: ${({ $green }) => ($green ? '#25d36610' : 'inherit')};
+  }
+
+  &:not([data-green]):hover {
     border-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.primary};
     background: ${({ theme }) => theme.colors.primary}10;
   }
-
-  ${({ $variant }) =>
-    $variant === 'whatsapp' &&
-    `
-    &:hover {
-      border-color: #25d366;
-      color: #25d366;
-      background: #25d36610;
-    }
-  `}
 `
 
 const CopiedBtn = styled(ActionBtn)`
-  border-color: #22c55e;
-  color: #22c55e;
-  background: #22c55e10;
+  border-color: #22c55e !important;
+  color: #22c55e !important;
+  background: #22c55e10 !important;
+  pointer-events: none;
 `
 
 const ContactItem = styled.a`
   display: flex;
   align-items: center;
-  gap: 0.875rem;
-  padding: 1rem 1.25rem;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
   background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 0.75rem;
@@ -159,26 +164,15 @@ const ContactItem = styled.a`
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.primary}20;
+    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.primary}15;
   }
 `
 
 function CopyContactCard({
-  label,
-  value,
-  icon,
-  directUrl,
-  directIcon,
-  directLabel,
-  directVariant,
+  label, value, icon, directUrl, directIcon, directLabel, isWhatsApp,
 }: {
-  label: string
-  value: string
-  icon: React.ReactNode
-  directUrl: string
-  directIcon: React.ReactNode
-  directLabel: string
-  directVariant?: 'copy' | 'whatsapp' | 'mail'
+  label: string; value: string; icon: React.ReactNode
+  directUrl: string; directIcon: React.ReactNode; directLabel: string; isWhatsApp?: boolean
 }) {
   const [copied, setCopied] = useState(false)
 
@@ -195,14 +189,12 @@ function CopyContactCard({
         <ContactIcon>{icon}</ContactIcon>
         <ContactInfo>
           <ContactLabel>{label}</ContactLabel>
-          <ContactValue>{value}</ContactValue>
+          <ContactValue title={value}>{value}</ContactValue>
         </ContactInfo>
       </CardTop>
       <Actions>
         {copied ? (
-          <CopiedBtn as="button">
-            <HiCheck /> Copiado!
-          </CopiedBtn>
+          <CopiedBtn as="span"><HiCheck /> Copiado!</CopiedBtn>
         ) : (
           <ActionBtn as="button" onClick={handleCopy}>
             <HiClipboardCopy /> Copiar
@@ -212,7 +204,9 @@ function CopyContactCard({
           href={directUrl}
           target="_blank"
           rel="noopener noreferrer"
-          $variant={directVariant}
+          $green={isWhatsApp}
+          data-green={isWhatsApp ? true : undefined}
+          style={isWhatsApp ? {} : undefined}
         >
           {directIcon} {directLabel}
         </ActionBtn>
@@ -241,8 +235,7 @@ export function Contact() {
               icon={<FaEnvelope />}
               directUrl="mailto:guilhermedelfino25@gmail.com"
               directIcon={<HiExternalLink />}
-              directLabel="Enviar email"
-              directVariant="mail"
+              directLabel="Email"
             />
             <CopyContactCard
               label={t('contact.phone')}
@@ -251,7 +244,7 @@ export function Contact() {
               directUrl={`https://wa.me/${phone}`}
               directIcon={<FaWhatsapp />}
               directLabel="WhatsApp"
-              directVariant="whatsapp"
+              isWhatsApp
             />
             <ContactItem href="https://linkedin.com/in/guilherme-narciso" target="_blank" rel="noopener noreferrer">
               <ContactIcon><FaLinkedin /></ContactIcon>

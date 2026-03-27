@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import { FaGraduationCap } from 'react-icons/fa'
+import { HiChevronDown } from 'react-icons/hi'
 import { useTranslation } from '@/i18n/LanguageContext'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
@@ -12,7 +14,11 @@ const EducationSection = styled.section`
 const Inner = styled.div`
   max-width: 1100px;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 4rem 1rem;
+
+  @media (min-width: 480px) {
+    padding: 5rem 1.5rem;
+  }
 
   @media (min-width: 768px) {
     padding: 6rem 2rem;
@@ -26,66 +32,122 @@ const Content = styled.div<{ $visible: boolean }>`
 `
 
 const Grid = styled.div`
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 `
 
 const EduCard = styled(Card)`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
 `
 
-const CardHeader = styled.div`
+const CardHeader = styled.button`
   display: flex;
-  gap: 1rem;
-  align-items: flex-start;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    cursor: default;
+  }
 `
 
 const Icon = styled.div`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 0.5rem;
   background: ${({ theme }) => theme.colors.primary}20;
   color: ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.125rem;
+  font-size: 1rem;
   flex-shrink: 0;
 `
 
+const HeaderText = styled.div`
+  flex: 1;
+  min-width: 0;
+`
+
 const Degree = styled.h3`
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.125rem;
 `
 
 const School = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.primary};
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.125rem;
 `
 
 const Period = styled.p`
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: ${({ theme }) => theme.colors.textSecondary};
+`
+
+const ChevronIcon = styled.div<{ $open: boolean }>`
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  transform: rotate(${({ $open }) => ($open ? '180deg' : '0')});
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `
 
 const Divider = styled.hr`
   border: none;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
+  margin: 0 1.25rem;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+`
+
+const CollapsibleBody = styled.div<{ $open: boolean }>`
+  display: grid;
+  grid-template-rows: ${({ $open }) => ($open ? '1fr' : '0fr')};
+  transition: grid-template-rows 0.25s ease;
+
+  & > div { overflow: hidden; }
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+`
+
+const CardBody = styled.div`
+  padding: 0.75rem 1.25rem 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-top: 0.875rem;
+  }
 `
 
 const HighlightLabel = styled.p`
-  font-size: 0.8125rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -100,7 +162,7 @@ const BulletList = styled.ul`
 `
 
 const Bullet = styled.li`
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: ${({ theme }) => theme.colors.textSecondary};
   line-height: 1.6;
   padding-left: 1rem;
@@ -114,36 +176,63 @@ const Bullet = styled.li`
   }
 `
 
+interface EduEntry {
+  degree: string
+  school: string
+  period: string
+  highlightLabel: string
+  bullets: string[]
+}
+
+function EduCardItem({ entry }: { entry: EduEntry }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <EduCard>
+      <CardHeader onClick={() => setOpen(o => !o)}>
+        <Icon><FaGraduationCap /></Icon>
+        <HeaderText>
+          <Degree>{entry.degree}</Degree>
+          <School>{entry.school}</School>
+          <Period>{entry.period}</Period>
+        </HeaderText>
+        <ChevronIcon $open={open}><HiChevronDown /></ChevronIcon>
+      </CardHeader>
+
+      <Divider />
+
+      <CollapsibleBody $open={open}>
+        <div>
+          <CardBody>
+            <HighlightLabel>{entry.highlightLabel}</HighlightLabel>
+            <BulletList>
+              {entry.bullets.map((b, i) => <Bullet key={i}>{b}</Bullet>)}
+            </BulletList>
+          </CardBody>
+        </div>
+      </CollapsibleBody>
+    </EduCard>
+  )
+}
+
 export function Education() {
   const { t } = useTranslation()
   const { ref, isVisible } = useScrollAnimation()
 
-  const entries = [
+  const entries: EduEntry[] = [
     {
       degree: t('education.sptech.degree'),
       school: t('education.sptech.school'),
       period: t('education.sptech.period'),
       highlightLabel: t('education.sptech.highlight.label'),
-      bullets: [
-        t('education.sptech.highlight.b0'),
-        t('education.sptech.highlight.b1'),
-        t('education.sptech.highlight.b2'),
-        t('education.sptech.highlight.b3'),
-        t('education.sptech.highlight.b4'),
-        t('education.sptech.highlight.b5'),
-      ],
+      bullets: [0, 1, 2, 3, 4, 5].map(i => t(`education.sptech.highlight.b${i}`)),
     },
     {
       degree: t('education.etec.degree'),
       school: t('education.etec.school'),
       period: t('education.etec.period'),
       highlightLabel: t('education.etec.highlight.label'),
-      bullets: [
-        t('education.etec.highlight.b0'),
-        t('education.etec.highlight.b1'),
-        t('education.etec.highlight.b2'),
-        t('education.etec.highlight.b3'),
-      ],
+      bullets: [0, 1, 2, 3].map(i => t(`education.etec.highlight.b${i}`)),
     },
   ]
 
@@ -153,27 +242,7 @@ export function Education() {
         <Content ref={ref as React.RefObject<HTMLDivElement>} $visible={isVisible}>
           <SectionTitle>{t('education.title')}</SectionTitle>
           <Grid>
-            {entries.map((e, i) => (
-              <EduCard key={i}>
-                <CardHeader>
-                  <Icon><FaGraduationCap /></Icon>
-                  <div>
-                    <Degree>{e.degree}</Degree>
-                    <School>{e.school}</School>
-                    <Period>{e.period}</Period>
-                  </div>
-                </CardHeader>
-                <Divider />
-                <div>
-                  <HighlightLabel>{e.highlightLabel}</HighlightLabel>
-                  <BulletList>
-                    {e.bullets.map((b, j) => (
-                      <Bullet key={j}>{b}</Bullet>
-                    ))}
-                  </BulletList>
-                </div>
-              </EduCard>
-            ))}
+            {entries.map((e, i) => <EduCardItem key={i} entry={e} />)}
           </Grid>
         </Content>
       </Inner>

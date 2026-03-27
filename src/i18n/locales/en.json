@@ -20,6 +20,8 @@
   "about.p3": "I'm passionate about solving hard engineering problems — from optimizing a production query from 40s to 6s on 2M+ records, to designing event-driven architectures that bridge hardware and cloud systems.",
 
   "experience.title": "Experience",
+  "experience.expand": "Show details",
+  "experience.collapse": "Hide details",
 
   "experience.netcracker.role": "Software Engineer",
   "experience.netcracker.company": "Netcracker Technology",

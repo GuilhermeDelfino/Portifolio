@@ -56,29 +56,36 @@ const Backdrop = styled.div<{ $open: boolean }>`
   }
 `
 
-const NavLinks = styled.nav<{ $open: boolean }>`
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+const NavLinks = styled.nav`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+`
+
+const MobileMenu = styled.nav<{ $open: boolean }>`
+  display: none;
 
   @media (max-width: 767px) {
+    display: flex;
     position: fixed;
     top: 4rem;
+    left: 0;
     right: 0;
-    width: min(280px, 85vw);
     bottom: 0;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: stretch;
     gap: 0.25rem;
     background: ${({ theme }) => theme.colors.surface};
-    border-left: 1px solid ${({ theme }) => theme.colors.border};
-    transform: translateX(${({ $open }) => ($open ? '0' : '100%')});
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    transform: translateY(${({ $open }) => ($open ? '0' : '-100%')});
     transition: transform 0.3s ease;
-    padding: 1.5rem 1rem;
+    padding: 1rem;
     z-index: 99;
     overflow-y: auto;
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
   }
 `
 
@@ -98,9 +105,10 @@ const NavLink = styled.a`
   }
 
   @media (max-width: 767px) {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
+    font-size: 1.125rem;
+    padding: 1rem 1.25rem;
     border-radius: 0.5rem;
+    text-align: center;
   }
 `
 
@@ -186,7 +194,8 @@ export function Navbar() {
             GN
           </Logo>
 
-          <NavLinks $open={menuOpen}>
+          {/* Desktop links — hidden on mobile via media query */}
+          <NavLinks>
             {navItems.map(item => (
               <NavLink key={item.key} onClick={() => handleNavClick(item.href)}>
                 {t(item.key)}
@@ -213,6 +222,15 @@ export function Navbar() {
           </Controls>
         </NavInner>
       </Nav>
+
+      {/* Mobile menu — outside Nav to avoid backdrop-filter stacking context */}
+      <MobileMenu $open={menuOpen}>
+        {navItems.map(item => (
+          <NavLink key={item.key} onClick={() => handleNavClick(item.href)}>
+            {t(item.key)}
+          </NavLink>
+        ))}
+      </MobileMenu>
 
       <Backdrop $open={menuOpen} onClick={() => setMenuOpen(false)} />
     </>

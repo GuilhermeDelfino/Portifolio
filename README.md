@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Guilherme Narciso — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built with React + Vite + TypeScript.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **Vite 8** — build tool
+- **Tailwind CSS v4** — utility-first styling
+- **Styled Components** — theme-aware component styling
+- **Sass** — global styles, variables, mixins
+- **react-icons** — icon library
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Dark / Light mode (OS preference + toggle)
+- Bilingual: English / Portuguese (browser preference + toggle)
+- Responsive — mobile-first, tested at 400px+
+- Collapsible skill groups and experience details on mobile
+- Download CV button (correct language version)
+- Docker + nginx deployment with SSL support
+- GitHub Actions workflow for GitHub Pages
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # production build → dist/
+npm run preview   # preview production build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Adding your profile photo
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Place `profile.jpg` in the `public/` folder. Recommended: square image, minimum 400×400px.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Certification links
+
+Update the credential URLs in `src/components/sections/Certifications.tsx`:
+
+```ts
+credentialUrl: 'https://www.credly.com/badges/your-badge-id',   // AWS
+credentialUrl: 'https://learn.microsoft.com/...',                // Azure
+```
+
+## Docker
+
+```bash
+# Build and run
+docker build -t portfolio .
+docker run -p 80:80 portfolio
+
+# Or with docker-compose
+docker compose up
+```
+
+## GitHub Pages deployment
+
+1. Push to a GitHub repository
+2. Go to **Settings → Pages → Source → GitHub Actions**
+3. Push to `main` — the workflow in `.github/workflows/deploy.yml` handles the rest
+
+If deploying to `github.com/username/repo-name` (without custom domain), set `base` in `vite.config.ts`:
+
+```ts
+base: '/repo-name/',
+```
+
+For a custom domain, keep `base: '/'` and add a `CNAME` file to `public/` with your domain.
+
+## Project structure
+
+```
+src/
+├── components/
+│   ├── layout/     # Navbar, Footer
+│   ├── sections/   # Hero, About, Experience, Skills, Education, Certifications, Contact
+│   └── ui/         # Button, Card, SkillBadge, SectionTitle
+├── data/           # skills.ts
+├── hooks/          # useScrollAnimation
+├── i18n/           # LanguageContext, en.json, pt.json
+├── styles/         # global.scss, _variables.scss, _animations.scss, tailwind.css
+└── theme/          # ThemeContext, light/dark theme objects
+nginx/
+├── default.conf        # production nginx config
+└── ssl.conf.template   # SSL/HTTPS template for Certbot
 ```
