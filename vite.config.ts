@@ -5,7 +5,7 @@ import path from 'path'
 
 // Set base to '/' for custom domain, or '/repo-name/' for github.com/user/repo-name
 export default defineConfig({
-  base: '/Portifolio/',
+  base: '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

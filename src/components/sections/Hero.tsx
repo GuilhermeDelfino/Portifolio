@@ -220,7 +220,7 @@ export function Hero() {
         </HeroText>
 
         <PhotoWrapper>
-          <ProfilePhoto src={`${import.meta.env.BASE_URL}profile.jpg`} alt="Guilherme Narciso" />
+          <ProfilePhoto src="/profile.jpg" alt="Guilherme Narciso" />
         </PhotoWrapper>
       </HeroInner>
 
