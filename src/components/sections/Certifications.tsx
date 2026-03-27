@@ -124,7 +124,7 @@ export function Certifications() {
       name: t('certifications.aws.name'),
       issuer: t('certifications.aws.issuer'),
       date: t('certifications.aws.date'),
-      credentialUrl: 'https://www.credly.com/badges/your-aws-badge-id',
+      credentialUrl: 'https://www.credly.com/badges/bebcc624-4637-46c9-8ec8-13a12b2a8c4f',
       credentialLabel: t('certifications.view'),
     },
     {
@@ -133,7 +133,7 @@ export function Certifications() {
       name: t('certifications.azure.name'),
       issuer: t('certifications.azure.issuer'),
       date: t('certifications.azure.date'),
-      credentialUrl: 'https://learn.microsoft.com/en-us/users/your-profile/credentials',
+      credentialUrl: 'https://learn.microsoft.com/en-us/users/narcisoguilherme-8459/credentials/f7bee6f4469289f2?ref=https%3A%2F%2Fwww.linkedin.com%2F',
       credentialLabel: t('certifications.view'),
     },
   ]
