@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { useTranslation } from '@/i18n/LanguageContext'
 
 const FooterWrapper = styled.footer`
-  background: ${({ theme }) => theme.colors.surface};
+  background: ${({ theme }) => theme.colors.background};
   border-top: 1px solid ${({ theme }) => theme.colors.border};
   padding: 2rem 1.5rem;
   text-align: center;

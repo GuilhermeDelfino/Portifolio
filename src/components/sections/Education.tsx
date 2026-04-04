@@ -6,6 +6,7 @@ import { useTranslation } from '@/i18n/LanguageContext'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { Card } from '@/components/ui/Card'
+import { highlight } from '@/utils/highlight'
 
 const EducationSection = styled.section`
   background: ${({ theme }) => theme.colors.background};
@@ -206,7 +207,7 @@ function EduCardItem({ entry }: { entry: EduEntry }) {
           <CardBody>
             <HighlightLabel>{entry.highlightLabel}</HighlightLabel>
             <BulletList>
-              {entry.bullets.map((b, i) => <Bullet key={i}>{b}</Bullet>)}
+              {entry.bullets.map((b, i) => <Bullet key={i}>{highlight(b)}</Bullet>)}
             </BulletList>
           </CardBody>
         </div>
@@ -225,7 +226,7 @@ export function Education() {
       school: t('education.sptech.school'),
       period: t('education.sptech.period'),
       highlightLabel: t('education.sptech.highlight.label'),
-      bullets: [0, 1, 2, 3, 4, 5].map(i => t(`education.sptech.highlight.b${i}`)),
+      bullets: [0, 1, 2, 3, 4, 5, 6, 7].map(i => t(`education.sptech.highlight.b${i}`)),
     },
     {
       degree: t('education.etec.degree'),

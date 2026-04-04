@@ -7,7 +7,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 
 const ContactSection = styled.section`
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.surface};
 `
 
 const Inner = styled.div`

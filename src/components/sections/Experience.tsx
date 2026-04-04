@@ -5,6 +5,7 @@ import { useTranslation } from '@/i18n/LanguageContext'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { SkillBadge } from '@/components/ui/SkillBadge'
+import { highlight } from '@/utils/highlight'
 
 const ExperienceSection = styled.section`
   background: ${({ theme }) => theme.colors.background};
@@ -140,16 +141,6 @@ const CollapsibleBody = styled.div<{ $open: boolean }>`
   }
 `
 
-const SubProject = styled.div`
-  margin-bottom: 0.875rem;
-`
-
-const SubProjectTitle = styled.p`
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.accent};
-  margin-bottom: 0.375rem;
-`
 
 const BulletList = styled.ul`
   display: flex;
@@ -226,8 +217,8 @@ export function Experience() {
   const { ref, isVisible } = useScrollAnimation()
 
   const netcrackerBullets = [0, 1, 2].map(i => t(`experience.netcracker.bullets.${i}`))
-  const raiaBullets = [0, 1, 2].map(i => t(`experience.accenture.raiadrogasil.bullets.${i}`))
-  const circleBullets = [0, 1].map(i => t(`experience.accenture.circlek.bullets.${i}`))
+  const accentureBullets = [0, 1, 2].map(i => t(`experience.accenture.bullets.${i}`))
+  const accentureInternBullets = [0, 1].map(i => t(`experience.accenture.intern.bullets.${i}`))
 
   return (
     <ExperienceSection id="experience">
@@ -244,7 +235,7 @@ export function Experience() {
               technologies={['Java', 'Go', 'Spring Boot', 'Kubernetes', 'ArangoDB', 'Kafka', 'Graylog', 'PostgreSQL']}
             >
               <BulletList>
-                {netcrackerBullets.map((b, i) => <Bullet key={i}>{b}</Bullet>)}
+                {netcrackerBullets.map((b, i) => <Bullet key={i}>{highlight(b)}</Bullet>)}
               </BulletList>
             </TimelineEntry>
 
@@ -253,20 +244,23 @@ export function Experience() {
               role={t('experience.accenture.role')}
               period={t('experience.accenture.period')}
               location={t('experience.accenture.location')}
-              technologies={['Java', 'Spring Boot', 'Next.js', 'NestJS', 'GraphQL', 'RabbitMQ', 'MongoDB', 'Azure', 'OracleDB', 'Redis']}
+              technologies={['Java', 'Spring Boot', 'NestJS', 'GraphQL', 'RabbitMQ', 'MongoDB', 'Azure', 'OracleDB', 'Redis', 'CosmosDB']}
             >
-              <SubProject>
-                <SubProjectTitle>{t('experience.accenture.sub.raiadrogasil')}</SubProjectTitle>
-                <BulletList>
-                  {raiaBullets.map((b, i) => <Bullet key={i}>{b}</Bullet>)}
-                </BulletList>
-              </SubProject>
-              <SubProject>
-                <SubProjectTitle>{t('experience.accenture.sub.circlek')}</SubProjectTitle>
-                <BulletList>
-                  {circleBullets.map((b, i) => <Bullet key={i}>{b}</Bullet>)}
-                </BulletList>
-              </SubProject>
+              <BulletList>
+                {accentureBullets.map((b, i) => <Bullet key={i}>{highlight(b)}</Bullet>)}
+              </BulletList>
+            </TimelineEntry>
+
+            <TimelineEntry
+              company={t('experience.accenture.company')}
+              role={t('experience.accenture.intern.role')}
+              period={t('experience.accenture.intern.period')}
+              location={t('experience.accenture.location')}
+              technologies={['Node.js', 'NestJS', 'GraphQL', 'MongoDB', 'RabbitMQ', 'Redis', 'Spring Boot', 'Java']}
+            >
+              <BulletList>
+                {accentureInternBullets.map((b, i) => <Bullet key={i}>{highlight(b)}</Bullet>)}
+              </BulletList>
             </TimelineEntry>
           </Timeline>
         </Content>

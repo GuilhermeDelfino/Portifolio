@@ -12,10 +12,10 @@ const CertSection = styled.section`
 const Inner = styled.div`
   max-width: 1100px;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 4rem 1.5rem 3rem;
 
   @media (min-width: 768px) {
-    padding: 6rem 2rem;
+    padding: 5rem 2rem 3.5rem;
   }
 `
 

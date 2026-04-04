@@ -9,6 +9,7 @@ import { Experience } from '@/components/sections/Experience'
 import { Skills } from '@/components/sections/Skills'
 import { Education } from '@/components/sections/Education'
 import { Certifications } from '@/components/sections/Certifications'
+import { Projects } from '@/components/sections/Projects'
 import { Contact } from '@/components/sections/Contact'
 
 function AppContent() {
@@ -30,6 +31,7 @@ function AppContent() {
         <Skills />
         <Education />
         <Certifications />
+        <Projects />
         <Contact />
       </main>
       <Footer />
