@@ -32,7 +32,7 @@ npm run preview   # preview production build
 
 ## Adding your profile photo
 
-Place `profile.jpg` in the `public/` folder. Recommended: square image, minimum 400×400px.
+Place `profile.png` in the `public/` folder. Recommended: square image, minimum 400×400px.
 
 > The image is referenced via `import.meta.env.BASE_URL` to ensure correct path resolution on GitHub Pages.
 
