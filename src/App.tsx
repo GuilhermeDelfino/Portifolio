@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { ThemeProvider } from '@/theme/ThemeContext'
-import { LanguageProvider, useTranslation } from '@/i18n/LanguageContext'
+import { LanguageProvider } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'

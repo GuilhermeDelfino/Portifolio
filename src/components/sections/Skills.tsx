@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { HiChevronDown } from 'react-icons/hi'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { SkillBadge } from '@/components/ui/SkillBadge'

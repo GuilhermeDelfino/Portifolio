@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { HiMenu, HiX, HiSun, HiMoon } from 'react-icons/hi'
-import { useTheme } from '@/theme/ThemeContext'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTheme } from '@/theme/themeContextValue'
+import { useTranslation } from '@/i18n/languageContextValue'
 
 const Nav = styled.header`
   position: fixed;

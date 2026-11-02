@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaFileAlt, FaWhatsapp } from 'react-icons/fa'
 import { HiClipboardCopy, HiCheck, HiExternalLink } from 'react-icons/hi'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 

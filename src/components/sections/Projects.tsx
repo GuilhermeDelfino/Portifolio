@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { HiExternalLink, HiX, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { Card } from '@/components/ui/Card'

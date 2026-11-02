@@ -1,19 +1,11 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import en from './locales/en.json'
 import pt from './locales/pt.json'
 
-type Language = 'en' | 'pt'
+import { LanguageContext, type Language } from './languageContextValue'
+
 type Translations = Record<string, string>
-
 const locales: Record<Language, Translations> = { en, pt }
-
-interface LanguageContextValue {
-  language: Language
-  setLanguage: (lang: Language) => void
-  t: (key: string) => string
-}
-
-const LanguageContext = createContext<LanguageContextValue | null>(null)
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
@@ -38,10 +30,4 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       {children}
     </LanguageContext.Provider>
   )
-}
-
-export function useTranslation() {
-  const ctx = useContext(LanguageContext)
-  if (!ctx) throw new Error('useTranslation must be used within LanguageProvider')
-  return ctx
 }

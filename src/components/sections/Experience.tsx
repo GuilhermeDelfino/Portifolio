@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { HiChevronDown } from 'react-icons/hi'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { SkillBadge } from '@/components/ui/SkillBadge'
@@ -216,6 +216,7 @@ export function Experience() {
   const { t } = useTranslation()
   const { ref, isVisible } = useScrollAnimation()
 
+  const gftBullets = [0, 1, 2].map(i => t(`experience.gft.bullets.${i}`))
   const netcrackerBullets = [0, 1, 2].map(i => t(`experience.netcracker.bullets.${i}`))
   const accentureBullets = [0, 1, 2].map(i => t(`experience.accenture.bullets.${i}`))
   const accentureInternBullets = [0, 1].map(i => t(`experience.accenture.intern.bullets.${i}`))
@@ -227,6 +228,18 @@ export function Experience() {
           <SectionTitle>{t('experience.title')}</SectionTitle>
 
           <Timeline>
+            <TimelineEntry
+              company={t('experience.gft.company')}
+              role={t('experience.gft.role')}
+              period={t('experience.gft.period')}
+              location={t('experience.gft.location')}
+              technologies={['Java 21', 'Spring Boot', 'Kafka', 'Apache Camel', 'WebFlux', 'AWS Lambda', 'Kubernetes', 'Helm', 'PostgreSQL', 'Devin', 'Windsurf']}
+            >
+              <BulletList>
+                {gftBullets.map((b, i) => <Bullet key={i}>{highlight(b)}</Bullet>)}
+              </BulletList>
+            </TimelineEntry>
+
             <TimelineEntry
               company={t('experience.netcracker.company')}
               role={t('experience.netcracker.role')}

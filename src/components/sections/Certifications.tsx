@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FaAws, FaMicrosoft, FaExternalLinkAlt } from 'react-icons/fa'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { Card } from '@/components/ui/Card'

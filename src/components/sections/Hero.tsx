@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { FaArrowDown } from 'react-icons/fa'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 import { Button } from '@/components/ui/Button'
 
 const fadeInUp = keyframes`

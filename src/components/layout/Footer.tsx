@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
-import { useTranslation } from '@/i18n/LanguageContext'
+import { useTranslation } from '@/i18n/languageContextValue'
 
 const FooterWrapper = styled.footer`
   background: ${({ theme }) => theme.colors.background};

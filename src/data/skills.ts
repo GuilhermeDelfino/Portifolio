@@ -13,12 +13,12 @@ export const skillGroups: SkillGroup[] = [
   {
     key: 'frameworks',
     labelKey: 'skills.frameworks',
-    items: ['Spring Boot', 'Quarkus', 'React', 'Next.js', 'Node.js', 'NestJS', 'GraphQL'],
+    items: ['Spring Boot', 'WebFlux', 'Apache Camel', 'Quarkus', 'React', 'Next.js', 'Node.js', 'NestJS', 'GraphQL'],
   },
   {
     key: 'cloud',
     labelKey: 'skills.cloud',
-    items: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'AKS', 'CI/CD'],
+    items: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'Helm', 'AWS Lambda', 'AKS', 'CI/CD'],
   },
   {
     key: 'data',
@@ -33,6 +33,6 @@ export const skillGroups: SkillGroup[] = [
   {
     key: 'tools',
     labelKey: 'skills.tools',
-    items: ['Git', 'Maven', 'Gradle', 'Scrum', 'JUnit', 'Mockito'],
+    items: ['Git', 'Maven', 'Gradle', 'Scrum', 'JUnit', 'Mockito', 'Devin', 'Windsurf'],
   },
 ]
