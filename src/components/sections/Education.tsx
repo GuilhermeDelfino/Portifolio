@@ -226,7 +226,7 @@ export function Education() {
       school: t('education.fiap.school'),
       period: t('education.fiap.period'),
       highlightLabel: t('education.fiap.highlight.label'),
-      bullets: [0, 1, 2].map(i => t(`education.fiap.highlight.b${i}`)),
+      bullets: [0, 1, 2, 3, 4, 5].map(i => t(`education.fiap.highlight.b${i}`)),
     },
     {
       degree: t('education.sptech.degree'),

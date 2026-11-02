@@ -57,10 +57,10 @@
   "education.fiap.degree": "Postgraduate Specialization in Software Architecture",
   "education.fiap.school": "FIAP · in partnership with Alura",
   "education.fiap.period": "Mar 2026 – Mar 2027 (expected)",
-  "education.fiap.highlight.label": "Software Architecture · 360 hours · In progress",
-  "education.fiap.highlight.b0": "Hands-on postgraduate program with project-based Tech Challenges",
-  "education.fiap.highlight.b1": "Domain-Driven Design, Clean Architecture, hexagonal architecture, and microservices",
-  "education.fiap.highlight.b2": "Docker, Kubernetes, CI/CD, Terraform, NoSQL databases, and information security",
+  "education.fiap.highlight.label": "Course curriculum · 360 hours · In progress",
+  "education.fiap.highlight.b0": "Phase 1 — Domain-Driven Design (DDD), bounded contexts, Event Storming, architecture decision records (ADR), RFCs, hexagonal architecture, TDD, BDD, and OWASP Top 10.",
+  "education.fiap.highlight.b1": "Phase 2 — Docker, Clean Architecture, CI/CD with GitHub Actions, Terraform, Kubernetes, Helm, AWS EKS, and OpenTelemetry (traces, metrics, and logs).",
+  "education.fiap.highlight.b2": "Phase 3 — Application monitoring and observability with Datadog and New Relic; API Gateway, Kong, and serverless development on AWS.",
   "education.sptech.degree": "B.Tech in Systems Analysis and Development",
   "education.sptech.school": "SPTech",
   "education.sptech.period": "Jan 2022 – Dec 2023",
@@ -112,5 +112,8 @@
   "experience.gft.location": "São Paulo, Brazil",
   "experience.gft.bullets.0": "Developing backend services for an Open Finance solution that enables customers to transfer funds between their accounts at different financial institutions.",
   "experience.gft.bullets.1": "Building AI agents with Devin and Windsurf to automate development workflows, including ticket creation, bug resolution, and addressing pull request feedback.",
-  "experience.gft.bullets.2": "Contributing to technical discussions, supporting fellow engineers, and collaborating with other teams on backend development."
+  "experience.gft.bullets.2": "Contributing to technical discussions, supporting fellow engineers, and collaborating with other teams on backend development.",
+  "education.fiap.highlight.b3": "Phase 4 — Microservices, event-driven architecture, SAGA patterns, resilience, service mesh, chaos engineering, NoSQL, and Neo4j graph databases.",
+  "education.fiap.highlight.b4": "Phase 5 — Data privacy, LGPD and GDPR, data governance, technical communication, negotiation, and high-performance teams.",
+  "education.fiap.highlight.b5": "Hands-on program with a Tech Challenge project delivered in stages across all five phases."
 }
