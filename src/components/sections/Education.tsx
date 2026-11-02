@@ -222,6 +222,13 @@ export function Education() {
 
   const entries: EduEntry[] = [
     {
+      degree: t('education.fiap.degree'),
+      school: t('education.fiap.school'),
+      period: t('education.fiap.period'),
+      highlightLabel: t('education.fiap.highlight.label'),
+      bullets: [0, 1, 2].map(i => t(`education.fiap.highlight.b${i}`)),
+    },
+    {
       degree: t('education.sptech.degree'),
       school: t('education.sptech.school'),
       period: t('education.sptech.period'),
